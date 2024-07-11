@@ -1,16 +1,17 @@
-/* const { extend } = require('dayjs'); */
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: {
-    purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-    darkMode: false,
-    theme: {
-      extend: {},
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Open Sans"]
+      },
+      gridTemplateColumns: {
+        "1/5": "1fr 5fr"
+      }
     },
-    variants: {
-      extend: {},
-    },
-    plugins: [require('@tailwindcss/forms')],
   },
+  plugins: [],
 }
