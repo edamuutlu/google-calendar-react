@@ -9,19 +9,19 @@ export default function SmallCalendar() {
   );
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   useEffect(() => {
-    setCurrentMonth(getMonth(currentMonthIdx));
-  }, [currentMonthIdx]);
+    setCurrentMonth(getMonth(currentMonthIdx)); // currentMonthIdx değiştiğinde, currentMonth'u güncellenir
+  }, [currentMonthIdx]); // useEffect sadece currentMonthIdx değiştiğinde çalışır
 
   const {
     monthIndex,
-    setSmallCalendarMonth,
+    setSmallCalenderMonth,
     setDaySelected,
     daySelected,
-  } = useContext(GlobalContext);
+  } = useContext(GlobalContext); // GlobalContext'in değerleri alınmaktadır
 
   useEffect(() => {
-    setCurrentMonthIdx(monthIndex);
-  }, [monthIndex]);
+    setCurrentMonthIdx(monthIndex); // monthIndex değiştiğinde currentMonthIdx'yi güncellenir
+  }, [monthIndex]); // useEffect sadece monthIndex değiştiğinde çalışır
 
   function handlePrevMonth() {
     setCurrentMonthIdx(currentMonthIdx - 1);
@@ -32,7 +32,7 @@ export default function SmallCalendar() {
   function getDayClass(day) {
     const format = "DD-MM-YY";
     const nowDay = dayjs().format(format);
-    const currDay = day.format(format);
+    const currDay = day.format(format); /* SmallCalendar bileşenine geçirilen her günün dayjs nesnesidir. Yani, currDay, her bir günün formatlanmış halini içerir.*/
     const slcDay = daySelected && daySelected.format(format);
     if (nowDay === currDay) {
       return "bg-blue-500 rounded-full text-white";
@@ -63,7 +63,7 @@ export default function SmallCalendar() {
           </button>
         </div>
       </header>
-      <div className="grid grid-cols-7 grid-rows-6">
+      <div className="grid grid-cols-7 grid-rows-6">   {/* Takvimi oluştur */}
         {currentMonth[0].map((day, i) => (
           <span key={i} className="text-sm py-1 text-center">
             {day.format("dd").charAt(0)}
@@ -75,7 +75,7 @@ export default function SmallCalendar() {
               <button
                 key={idx}
                 onClick={() => {
-                  setSmallCalendarMonth(currentMonthIdx);
+                    setSmallCalenderMonth(currentMonthIdx);
                   setDaySelected(day);
                 }}
                 className={`py-1 w-full ${getDayClass(day)}`}
