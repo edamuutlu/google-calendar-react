@@ -1,4 +1,4 @@
-const { extend } = require('dayjs');
+/* const { extend } = require('dayjs'); */
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -14,4 +14,3 @@ module.exports = {
     plugins: [require('@tailwindcss/forms')],
   },
 }
-

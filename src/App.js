@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './index.css'
 import CalenderHeader from './components/CalenderHeader';
 import Month from './components/Month';
 import Sidebar from './components/Sidebar';
