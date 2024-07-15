@@ -7,6 +7,7 @@ export default function SmallCalendar() {
   const [currentMonthIdx, setCurrentMonthIdx] = useState(
     dayjs().month()
   );
+  
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   useEffect(() => {
     setCurrentMonth(getMonth(currentMonthIdx)); // currentMonthIdx değiştiğinde, currentMonth'u güncellenir
@@ -26,9 +27,11 @@ export default function SmallCalendar() {
   function handlePrevMonth() {
     setCurrentMonthIdx(currentMonthIdx - 1);
   }
+
   function handleNextMonth() {
     setCurrentMonthIdx(currentMonthIdx + 1);
   }
+
   function getDayClass(day) {
     const format = "DD-MM-YY";
     const nowDay = dayjs().format(format);
@@ -42,6 +45,7 @@ export default function SmallCalendar() {
       return "";
     }
   }
+
   return (
     <div className="mt-9">
       <header className="flex justify-between">
