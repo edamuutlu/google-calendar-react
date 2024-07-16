@@ -58,6 +58,7 @@ export default function ContextWrapper(props) {
         localStorage.setItem('savedEvents', JSON.stringify(savedEvents));
     }, [savedEvents]);
 
+    // savedEvents değiştiğinde, labels durumu güncellenir
     useEffect(() => {
         setLabels((prevLabels) => {
           return [...new Set(savedEvents.map((evt) => evt.label))].map(
@@ -80,6 +81,12 @@ export default function ContextWrapper(props) {
             setMonthIndex(smallCalenderMonth);
         }
     }, [smallCalenderMonth]);
+
+    useEffect(() => {
+        if (!showEventModal) {
+          setSelectedEvent(null);
+        }
+      }, [showEventModal]);
 
     function updateLabel(label){
         setLabels(labels.map((lbl) => lbl.label ===label.label ? label : lbl))
