@@ -82,12 +82,14 @@ export default function ContextWrapper(props) {
         }
     }, [smallCalenderMonth]);
 
+    // Event modalı kapatılınca label da kaldırılır
     useEffect(() => {
         if (!showEventModal) {
           setSelectedEvent(null);
         }
       }, [showEventModal]);
 
+    // 
     function updateLabel(label){
         setLabels(labels.map((lbl) => lbl.label ===label.label ? label : lbl))
     }
