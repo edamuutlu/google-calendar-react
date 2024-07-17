@@ -5,7 +5,7 @@ export default function Month({ month }) {
     <div className="flex-1 grid grid-cols-7 grid-rows-5">
       {month.map((row, i) => (
         <React.Fragment key={i}>
-          {row.map((day, idx) => (
+          {row.map((day, idx) => ( /* day, ilgili alandaki güne dair tarih-saat bilgisini sunar */
             <Day day={day} key={idx} rowIdx={i}/>
           ))}
         </React.Fragment>

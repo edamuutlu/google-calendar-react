@@ -23,7 +23,7 @@ export default function EventModal() {
       id: selectedEvent ? selectedEvent.id : Date.now(),
     }
     if (selectedEvent) {
-      dispatchCalEvent({ type: "update", payload: calendarEvent });
+      dispatchCalEvent({ type: "update", payload: calendarEvent }); /* ContextWrapper içinde işlemler yapılmaktadır */
     } else {
       dispatchCalEvent({ type: "push", payload: calendarEvent });
     }

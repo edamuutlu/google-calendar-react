@@ -7,7 +7,7 @@ export default function Day({ day, rowIdx }) {
 
   const { setDaySelected, setShowEventModal, filteredEvents, setSelectedEvent } = useContext(GlobalContext);
 
-  //?
+  // Label kısmında seçili olan eventlerin gözükmesini sağlar
   useEffect(() => {
     const events = filteredEvents.filter(
       (evt) =>
@@ -25,7 +25,7 @@ export default function Day({ day, rowIdx }) {
     <div className="border border-gray-200 flex flex-col">
       <header className="flex flex-col items-center">
         {rowIdx === 0 && (
-          <p className="text-sm mt-1">{day.format("ddd").toUpperCase()}</p>
+          <p className="text-sm mt-1">{day.format("ddd").toUpperCase()}</p> /* Haftanın günleri takvimde görüntülenir */
         )}
         <p className={`text-sm p-1 my-1 text-center ${getCurrentDayClass()}`}>
           {day.format("DD")}

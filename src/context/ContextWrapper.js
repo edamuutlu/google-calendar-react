@@ -37,7 +37,7 @@ export default function ContextWrapper(props) {
     const [showEventModal, setShowEventModal] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [labels, setLabels] = useState([]);
-    const [savedEvents, dispatchCalEvent] = useReducer(
+    const [savedEvents, dispatchCalEvent] = useReducer( /* dispatchCalEvent ile push, update, delete gibi durum güncellemeleri yapılacak */
         savedEventsReducer,
         [],
         initEvents /* Başlangıç durumunu hesaplayan fonksiyon */
@@ -61,14 +61,14 @@ export default function ContextWrapper(props) {
     // savedEvents değiştiğinde, labels durumu güncellenir
     useEffect(() => {
         setLabels((prevLabels) => {
-          return [...new Set(savedEvents.map((evt) => evt.label))].map(
+          return [...new Set(savedEvents.map((evt) => evt.label))].map( /* her event içindeki label alınarak dizi oluşturulur */
             (label) => {
               const currentLabel = prevLabels.find(
                 (lbl) => lbl.label === label
               );
               return {
                 label,
-                checked: currentLabel ? currentLabel.checked : true,
+                checked: currentLabel ? currentLabel.checked : true, /* label içinde aynı etiket varsa önceki durumunu koru, yoksa true yap */
               };
             }
           );

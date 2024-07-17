@@ -9,9 +9,10 @@ export default function SmallCalendar() {
   );
   
   const [currentMonth, setCurrentMonth] = useState(getMonth());
+  // currentMonthIdx değiştiğinde, currentMonth'u güncellenir
   useEffect(() => {
-    setCurrentMonth(getMonth(currentMonthIdx)); // currentMonthIdx değiştiğinde, currentMonth'u güncellenir
-  }, [currentMonthIdx]); // useEffect sadece currentMonthIdx değiştiğinde çalışır
+    setCurrentMonth(getMonth(currentMonthIdx)); 
+  }, [currentMonthIdx]); 
 
   const {
     monthIndex,
@@ -20,9 +21,10 @@ export default function SmallCalendar() {
     daySelected,
   } = useContext(GlobalContext); // GlobalContext'in değerleri alınmaktadır
 
+  // monthIndex değiştiğinde currentMonthIdx'yi güncellenir
   useEffect(() => {
-    setCurrentMonthIdx(monthIndex); // monthIndex değiştiğinde currentMonthIdx'yi güncellenir
-  }, [monthIndex]); // useEffect sadece monthIndex değiştiğinde çalışır
+    setCurrentMonthIdx(monthIndex); 
+  }, [monthIndex]); 
 
   function handlePrevMonth() {
     setCurrentMonthIdx(currentMonthIdx - 1);
@@ -37,7 +39,7 @@ export default function SmallCalendar() {
     const nowDay = dayjs().format(format);
     const currDay = day.format(format); /* SmallCalendar bileşenine geçirilen her günün dayjs nesnesidir. Yani, currDay, her bir günün formatlanmış halini içerir.*/
     const slcDay = daySelected && daySelected.format(format);
-    if (nowDay === currDay) {
+    if (nowDay === currDay) { // bugün, seçilen güne eşit ise
       return "bg-blue-500 rounded-full text-white";
     } else if (currDay === slcDay) {
       return "bg-blue-100 rounded-full text-blue-600 font-bold";
@@ -67,7 +69,7 @@ export default function SmallCalendar() {
           </button>
         </div>
       </header>
-      <div className="grid grid-cols-7 grid-rows-6">   {/* Takvimi oluştur */}
+      <div className="grid grid-cols-7 grid-rows-6">   {/* Küçük takvimi oluştur */}
         {currentMonth[0].map((day, i) => (
           <span key={i} className="text-sm py-1 text-center">
             {day.format("dd").charAt(0)}
